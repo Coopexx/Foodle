@@ -1,0 +1,11 @@
+.meallist-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.meallist {
+    width: 75%;
+    background-color: var(--color-white);
+    border-radius: 2rem;
+}

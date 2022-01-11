@@ -1,0 +1,22 @@
+.img {
+    width: 100%;
+    margin-top: -5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+    z-index: -1;
+}
+
+.nav {
+    z-index: 100;
+    width: 100%;
+    height: 8rem;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+
+    &__caption {
+        margin-left: 7%;
+    }
+}

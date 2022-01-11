@@ -1,0 +1,47 @@
+.modal {
+    &__meal {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid rgba(#7f2607, 0.8);
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__container-left {
+        display: flex;
+        flex-direction: column;
+    }
+    &__container-right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 12rem;
+    }
+    &__container-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 15rem;
+    }
+    &__name {
+    }
+    &__price {
+        color: var(--color-orange-light);
+    }
+    &__amount {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        line-height: 1;
+        font-size: 1.2rem;
+    }
+    &__add {
+        padding: 0.5rem 2rem 0.5rem 2rem;
+        color: rgba(#7f2607, 0.8);
+        border: 1px solid rgba(#7f2607, 0.8);
+        border-radius: 1rem;
+        line-height: 1;
+        font-family: "Consolas", sans-serif;
+    }
+}

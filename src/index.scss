@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+
+$phone-small: 400px;
+$tab-port: 600px;
+$tab-land: 900px;
+$desk: 1200px;
+$big-desk: 1800px;
+
+:root {
+    --color-primary: #262526;
+    --color-secondary: #7f2607;
+    --color-secondary-dark: #451602;
+    --color-white: #fff;
+    --color-orange-light: #994f13;
+    --color-orange: #b03b17;
+    --color-grey: #323032;
+}
+
+@mixin respond($breakpoint) {
+    @media (min-width: #{$breakpoint / 16px * 1em}) {
+        @content;
+    }
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 25%;
+    @include respond($phone-small) {
+        font-size: 37.5%; //1rem = 6px
+    }
+    @include respond($tab-port) {
+        font-size: 50%; //1rem = 8px
+    }
+    @include respond($tab-land) {
+        font-size: 56.25%; //1rem = 9px
+    }
+    @include respond($desk) {
+        font-size: 62.5%; //1rem = 10px
+    }
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    box-sizing: border-box;
+    background-color: var(--color-primary);
+    font-size: 2rem;
+}

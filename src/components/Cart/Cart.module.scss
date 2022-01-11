@@ -1,0 +1,22 @@
+.cart {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    &__amount {
+    }
+    &__price {
+    }
+}
