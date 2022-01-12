@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .meallist-container {
     display: flex;
     justify-content: center;
@@ -6,6 +8,6 @@
 
 .meallist {
     width: 75%;
-    background-color: var(--color-white);
+    background-color: $color-white;
     border-radius: 2rem;
 }

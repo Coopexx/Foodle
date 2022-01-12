@@ -1,13 +1,18 @@
-.button {
+@import "../../styles/variables";
+
+.header {
     margin-right: 7%;
     width: 25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-secondary-dark);
+    background-color: $color-secondary-dark;
     padding: 1rem;
     border-radius: 5rem;
     font-size: 1.5rem;
+    color: $color-white;
+    border: none;
+    padding: 1.5rem 0 1.5rem 0;
 
     & * {
         margin: 0 0.5rem 0 0.5rem;
@@ -17,8 +22,8 @@
     }
 
     &__number {
-        padding: 0.1rem 1.5rem 0.1rem 1.5rem;
-        background-color: var(--color-orange);
+        padding: 0.3rem 1.7rem 0.2rem 1.5rem;
+        background-color: $color-orange;
         border-radius: 1.5rem;
     }
 }
@@ -26,16 +31,38 @@
 .cancel {
     padding: 0.5rem 1rem 0.5rem 1rem;
     border-radius: 2rem;
-    border: 1px solid rgba(#7f2607, 0.8);
+    border: 1px solid rgba($color-secondary, 0.8);
     background-color: transparent;
-    color: rgba(#7f2607, 0.8);
+    color: rgba($color-secondary, 0.8);
     margin-right: 1rem;
+    font-size: 2rem;
 }
 
 .submit {
     padding: 0.5rem 1rem 0.5rem 1rem;
     border-radius: 2rem;
-    border: 1px solid rgba(#7f2607, 0.8);
-    background-color: #7f2607;
-    color: #fff;
+    border: 1px solid rgba($color-secondary, 0.8);
+    background-color: $color-secondary;
+    color: $color-white;
+    font-size: 2rem;
+}
+
+.add {
+    color: $color-white;
+    background-color: $color-secondary;
+    border: none;
+    padding: 1rem 4.5rem 1rem 4.5rem;
+    border-radius: 2rem;
+    justify-self: flex-end;
+    font-size: 2rem;
+}
+
+.cart {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: rgba($color-secondary, 0.8);
+    border: 1px solid rgba($color-secondary, 0.8);
+    border-radius: 1rem;
+    line-height: 1;
+    font-family: "Consolas", sans-serif;
+    background-color: transparent;
 }

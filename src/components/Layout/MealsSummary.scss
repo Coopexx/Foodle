@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .description {
     display: flex;
     justify-content: center;
@@ -13,14 +15,16 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 2rem;
-        background-color: var(--color-grey);
-        color: var(--color-white);
+        background-color: $color-grey;
+        color: $color-white;
         text-align: center;
         box-shadow: 0px 5px 16px -4px rgba(0, 0, 0, 0.76);
     }
 
     &__caption {
+        width: 90%;
     }
     &__content {
+        width: 90%;
     }
 }

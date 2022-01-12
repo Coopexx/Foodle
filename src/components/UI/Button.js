@@ -1,32 +1,66 @@
 import classes from "./Button.module.scss";
 import shoppingCart from "../../img/shopping-cart.svg";
 
-const ButtonHeader = () => {
+const ButtonHeader = (props) => {
+    const openModalHandler = () => {
+        props.openModal();
+    };
     return (
-        <div className={classes.button}>
+        <button className={classes.header} onClick={openModalHandler}>
             <img
                 alt="Cart Icon"
-                className={classes["button__svg"]}
+                className={classes["header__svg"]}
                 src={shoppingCart}
             ></img>
             <h3>Your Cart</h3>
-            <h3 className={classes["button__number"]}>0</h3>
-        </div>
+            <h3 className={classes["header__number"]}>{props.count}</h3>
+        </button>
     );
 };
 
-const ButtonModal = (props) => {
+const ButtonAdd = () => {
+    return <button className={classes.add}>+ Add</button>;
+};
+
+const TwoButtons = (props) => {
+    const closeModalHandler = () => {
+        if (props.hasOwnProperty("closeModal")) {
+            props.closeModal();
+        }
+    };
+
     const className = classes[props.type];
-    return <button className={`${className}`}>{props.name}</button>;
+    return (
+        <button className={`${className}`} onClick={closeModalHandler}>
+            {props.content}
+        </button>
+    );
 };
 
 const Button = (props) => {
-    console.log(props.buttonHeader);
-    return (
-        <>
-            {props.buttonHeader && <ButtonHeader />}
-            {!props.buttonHeader && <ButtonModal {...props} />}
-        </>
-    );
+    let buttonType;
+
+    switch (props.type) {
+        case "cancel":
+            buttonType = <TwoButtons {...props} />;
+            break;
+        case "submit":
+            buttonType = <TwoButtons {...props} />;
+            break;
+        case "cart":
+            buttonType = <TwoButtons {...props} />;
+            break;
+        case "header":
+            buttonType = <ButtonHeader {...props} />;
+            break;
+        case "add":
+            buttonType = <ButtonAdd />;
+            break;
+
+        default:
+            console.log("Buttontype not found");
+    }
+
+    return <>{buttonType}</>;
 };
 export default Button;

@@ -1,18 +1,22 @@
+import Button from "../UI/Button";
 import classes from "./CartItem.module.scss";
 
-const CartItem = () => {
+const CartItem = (props) => {
+    const options1 = { type: "cart", content: "-" };
+    const options2 = { type: "cart", content: "+" };
+
     return (
         <div className={classes["modal__meal"]}>
             <div className={classes["modal__container-left"]}>
-                <p className={classes["modal__name"]}>Sushi</p>
+                <p className={classes["modal__name"]}>{props.name}</p>
                 <div className={classes["modal__container-price"]}>
-                    <p className={classes["modal__price"]}>$22.99</p>
-                    <p className={classes["modal__amount"]}>x 2</p>
+                    <p className={classes["modal__price"]}>{props.price}</p>
+                    <p className={classes["modal__amount"]}>x {props.amount}</p>
                 </div>
             </div>
             <div className={classes["modal__container-right"]}>
-                <div className={classes["modal__add"]}>-</div>
-                <div className={classes["modal__add"]}>+</div>
+                <Button {...options1}></Button>
+                <Button {...options2}></Button>
             </div>
         </div>
     );

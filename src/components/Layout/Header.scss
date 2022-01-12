@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .img {
     width: 100%;
     margin-top: -5rem;
@@ -13,8 +15,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-white);
-    background-color: var(--color-secondary);
+    color: $color-white;
+    background-color: $color-secondary;
 
     &__caption {
         margin-left: 7%;

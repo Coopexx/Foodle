@@ -5,7 +5,7 @@ const MealList = (props) => {
     return (
         <Card>
             {props.data.map((item) => (
-                <MealItem key={item.id} {...item} />
+                <MealItem key={item.id} {...item} addAmount={props.addAmount} />
             ))}
         </Card>
     );

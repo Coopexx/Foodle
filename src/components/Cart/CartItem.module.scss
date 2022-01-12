@@ -1,9 +1,11 @@
+@import "../../styles/variables";
+
 .modal {
     &__meal {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        border-bottom: 1px solid rgba(#7f2607, 0.8);
+        border-bottom: 1px solid rgba($color-secondary, 0.8);
         padding-bottom: 2rem;
         margin-bottom: 2rem;
     }
@@ -27,7 +29,7 @@
     &__name {
     }
     &__price {
-        color: var(--color-orange-light);
+        color: $color-orange-light;
     }
     &__amount {
         border: 1px solid rgba(0, 0, 0, 0.2);
@@ -35,13 +37,5 @@
         padding: 0.5rem 1rem 0.5rem 1rem;
         line-height: 1;
         font-size: 1.2rem;
-    }
-    &__add {
-        padding: 0.5rem 2rem 0.5rem 2rem;
-        color: rgba(#7f2607, 0.8);
-        border: 1px solid rgba(#7f2607, 0.8);
-        border-radius: 1rem;
-        line-height: 1;
-        font-family: "Consolas", sans-serif;
     }
 }

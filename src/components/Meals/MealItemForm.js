@@ -1,9 +1,21 @@
+import { useContext, useState } from "react";
+import AuthContext from "../../store/auth-context";
+import Button from "../UI/Button";
 import "./MealItemForm.scss";
 
-const MealItemForm = () => {
+const MealItemForm = (props) => {
+    const ctx = useContext(AuthContext);
+    const [amount, setAmount] = useState(1);
+
+    const changeAmountHandler = (event) => {
+        setAmount(event.target.value);
+    };
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log("submit");
+        ctx.setCount({ type: "increment", amount: amount });
+        props.addAmount(props.identifier, +amount);
+        setAmount(1);
     };
 
     return (
@@ -12,11 +24,13 @@ const MealItemForm = () => {
                 <label className="amount__text">Amount</label>
                 <input
                     className="amount__input"
-                    defaultValue={1}
+                    onChange={changeAmountHandler}
+                    value={amount}
                     type="number"
+                    min="0"
                 ></input>
             </div>
-            <button className="amount__button">+ Add</button>
+            <Button type="add"></Button>
         </form>
     );
 };
