@@ -23,15 +23,30 @@ const ButtonAdd = () => {
 };
 
 const TwoButtons = (props) => {
+    const className = classes[props.type];
+
     const closeModalHandler = () => {
         if (props.hasOwnProperty("closeModal")) {
             props.closeModal();
         }
     };
 
-    const className = classes[props.type];
     return (
         <button className={`${className}`} onClick={closeModalHandler}>
+            {props.content}
+        </button>
+    );
+};
+
+const ButtonCart = (props) => {
+    const className = classes[props.type];
+
+    const countHandler = () => {
+        props.clickEvent(props.content);
+    };
+
+    return (
+        <button className={`${className}`} onClick={countHandler}>
             {props.content}
         </button>
     );
@@ -48,7 +63,7 @@ const Button = (props) => {
             buttonType = <TwoButtons {...props} />;
             break;
         case "cart":
-            buttonType = <TwoButtons {...props} />;
+            buttonType = <ButtonCart {...props} />;
             break;
         case "header":
             buttonType = <ButtonHeader {...props} />;

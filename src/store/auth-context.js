@@ -21,7 +21,7 @@ export const AuthContextProvider = (props) => {
             case "increment":
                 return { count: state.count + +action.amount };
             case "decrement":
-                return { count: state.count - 1 };
+                return { count: state.count - +action.amount };
             default:
                 console.log("Error Reducer");
         }

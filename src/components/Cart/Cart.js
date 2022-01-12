@@ -13,6 +13,8 @@ const Cart = (props) => {
 
     const filteredMeals = props.filter(props.meals);
 
+    console.log(filteredMeals);
+
     return (
         <div className={classes.cart}>
             {ctx.showModal && (
