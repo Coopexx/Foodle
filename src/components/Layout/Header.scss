@@ -1,10 +1,16 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .img {
     width: 100%;
     margin-top: -5rem;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
     z-index: -1;
+    object-fit: cover;
+
+    @include respond($tab-land) {
+        height: 50vh;
+    }
 }
 
 .nav {

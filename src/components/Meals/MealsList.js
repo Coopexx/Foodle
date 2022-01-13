@@ -1,12 +1,15 @@
 import MealItem from "./MealItem";
 import Card from "../UI/Card";
+import { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 
-const MealList = (props) => {
+const MealList = () => {
+    const ctx = useContext(AuthContext);
     return (
         <Card>
-            {props.data.map((item) => (
-                <MealItem key={item.id} {...item} addAmount={props.addAmount} />
-            ))}
+            {ctx.mealList.map((item) => {
+                return <MealItem key={item.id} {...item} />;
+            })}
         </Card>
     );
 };

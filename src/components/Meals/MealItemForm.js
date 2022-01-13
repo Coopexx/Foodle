@@ -14,7 +14,11 @@ const MealItemForm = (props) => {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         ctx.setCount({ type: "increment", amount: amount });
-        props.addAmount(props.identifier, +amount);
+        ctx.changeMealAmount({
+            id: props.identifier,
+            value: +amount,
+            type: "add",
+        });
         setAmount(1);
     };
 
@@ -27,7 +31,7 @@ const MealItemForm = (props) => {
                     onChange={changeAmountHandler}
                     value={amount}
                     type="number"
-                    min="0"
+                    min="1"
                 ></input>
             </div>
             <Button type="add"></Button>

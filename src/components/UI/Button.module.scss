@@ -22,7 +22,7 @@
     }
 
     &__number {
-        padding: 0.3rem 1.7rem 0.2rem 1.5rem;
+        padding: 0.4rem 1.5rem 0.4rem 1.5rem;
         background-color: $color-orange;
         border-radius: 1.5rem;
     }
@@ -58,11 +58,12 @@
 }
 
 .cart {
-    padding: 0.5rem 2rem 0.5rem 2rem;
+    padding: 0 1.8rem 0 1.8rem;
     color: rgba($color-secondary, 0.8);
     border: 1px solid rgba($color-secondary, 0.8);
     border-radius: 1rem;
     line-height: 1;
     font-family: "Consolas", sans-serif;
     background-color: transparent;
+    font-size: 3rem;
 }

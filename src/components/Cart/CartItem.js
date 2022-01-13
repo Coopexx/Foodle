@@ -10,17 +10,30 @@ const CartItem = (props) => {
     const ctx = useContext(AuthContext);
 
     const onClickHandler = (identifier) => {
+        if (ctx.cartCounter.count <= 0) {
+            return;
+        }
         switch (identifier) {
             case "-":
                 ctx.setCount({
                     type: "decrement",
                     amount: 1,
                 });
+                ctx.changeMealAmount({
+                    id: props.id,
+                    value: -1,
+                    type: "remove",
+                });
                 break;
             case "+":
                 ctx.setCount({
                     type: "increment",
                     amount: 1,
+                });
+                ctx.changeMealAmount({
+                    id: props.id,
+                    value: 1,
+                    type: "add",
                 });
                 break;
             default:
@@ -33,7 +46,7 @@ const CartItem = (props) => {
             <div className={classes["modal__container-left"]}>
                 <p className={classes["modal__name"]}>{props.name}</p>
                 <div className={classes["modal__container-price"]}>
-                    <p className={classes["modal__price"]}>{props.price}</p>
+                    <p className={classes["modal__price"]}>${props.price}</p>
                     <p className={classes["modal__amount"]}>x {props.amount}</p>
                 </div>
             </div>

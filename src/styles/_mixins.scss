@@ -1,5 +1,6 @@
+@use "sass:math";
 @mixin respond($breakpoint) {
-    @media (min-width: #{$breakpoint / 16px * 1em}) {
+    @media (min-width: #{math.div($breakpoint, 16px) * 1em}) {
         @content;
     }
 }

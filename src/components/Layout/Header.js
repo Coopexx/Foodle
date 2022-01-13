@@ -14,7 +14,7 @@ const Header = () => {
                 <h1 className="nav__caption">ReactMeals</h1>
                 <Button
                     type="header"
-                    {...ctx.count}
+                    {...ctx.cartCounter}
                     openModal={ctx.openModal}
                 />
             </header>
