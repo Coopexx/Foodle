@@ -2,12 +2,11 @@
   <br />
     <img src="./banner.png" width="546" alt="discord.js" />
   <br />
+  <h2>Order fresh home-made dishes easily from your sofa</h2>
   <p>
    <img src="https://img.shields.io/github/license/Coopexx/food-order-app" alt="Discord server" />
   </p>
 </div>
-
-Order fresh home-made dishes easily from your sofa
 
 ## Live Version
 
