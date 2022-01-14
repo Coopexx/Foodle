@@ -7,8 +7,6 @@
   </p>
 </div>
 
-# Food Order App
-
 Order fresh home-made dishes easily from your sofa
 
 ## Live Version
