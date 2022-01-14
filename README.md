@@ -1,14 +1,26 @@
 # Food Order App
 
-A Food ordering app written in react
+Order fresh home-made dishes easil from your sofa
 
-### To Do
+## Live Version
 
--   Outsource Logic Component for:
+Find a demo application of this app [here](https://hendriktreuner.me/food-order-app)
 
-1. Increase/Decrease
-2. Counter
-3. Item List
-4. Filtered Item List
+## Functionality
 
-Handle State changes in global context component, because basically every component needs to modify these values to render the updated list correctly.
+-   Add custom amounts of a dish to your shopping cart
+-   View your shopping cart
+-   Modify the amount of dishes in your shopping cart
+-   Add and remove dishes in your shopping cart
+-   Open and close your shopping cart
+
+## How to install
+
+-   Download this repo
+-   Unpack the zip file
+-   cd into the 'deploy' folder
+-   run the 'food-order-app'
+
+## Credit
+
+Layout and design [Maximilian Schwarzmüller](https://github.com/maxschwarzmueller)
