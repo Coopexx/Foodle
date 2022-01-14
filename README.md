@@ -1,4 +1,4 @@
-[](https://img.shields.io/github/license/Coopexx/food-order-app)
+https://img.shields.io/github/license/Coopexx/food-order-app
 
 # Food Order App
 
