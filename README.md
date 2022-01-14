@@ -1,7 +1,11 @@
-<img href="./banner.png">
-
-<img href="https://img.shields.io/github/license/Coopexx/food-order-app
-"></img>
+<div align="center">
+  <br />
+    <img src="./banner.png" width="546" alt="discord.js" />
+  <br />
+  <p>
+   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" alt="Discord server" />
+  </p>
+</div>
 
 # Food Order App
 
