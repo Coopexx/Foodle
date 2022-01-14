@@ -1,4 +1,7 @@
-https://img.shields.io/github/license/Coopexx/food-order-app
+<img href="./banner.png">
+
+<img href="https://img.shields.io/github/license/Coopexx/food-order-app
+"></img>
 
 # Food Order App
 
