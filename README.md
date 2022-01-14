@@ -1,9 +1,9 @@
 <div align="center">
   <br />
-    <img src="./banner.png" width="546" alt="discord.js" />
+    <img src="./banner.png" width="546" alt="Banner" />
     <h3>Order fresh home-made dishes easily from your sofa</h3>
   <p>
-   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" alt="Discord server" />
+   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" alt="License Batch" />
   </p>
 </div>
 
