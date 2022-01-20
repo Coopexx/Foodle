@@ -6,37 +6,16 @@ const AuthContext = React.createContext({});
 //Provider
 export const AuthContextProvider = (props) => {
     const [showModal, setShowModal] = useState(false);
+    const [mealsTemplate, setMealsTemplate] = useState([]);
+    const [cartMeals, setCartMeals] = useState([]);
+    const [animation, setAnimation] = useState(false);
 
-    const mealsTemplate = [
-        {
-            id: "m1",
-            name: "Sushi",
-            info: "Finest fish and veggies",
-            price: "22.99",
-            amount: 0,
-        },
-        {
-            id: "m2",
-            name: "Schnitzel",
-            info: "A german specialty!",
-            price: "16.50",
-            amount: 0,
-        },
-        {
-            id: "m3",
-            name: "Barbecue Burger",
-            info: "American, raw, meaty",
-            price: "12.99",
-            amount: 0,
-        },
-        {
-            id: "m4",
-            name: "Green Bowl",
-            info: "Healthy...and green...",
-            price: "18.99",
-            amount: 0,
-        },
-    ];
+    const setAnimationHandler = () => {
+        setAnimation(true);
+        setTimeout(() => {
+            setAnimation(false);
+        }, 500);
+    };
 
     const closeModalHandler = () => {
         setShowModal(false);
@@ -46,11 +25,11 @@ export const AuthContextProvider = (props) => {
         setShowModal(true);
     };
 
-    const filterMeals = (meals) => {
-        return meals.filter((el) => el.amount > 0);
+    const setMealsHandler = (data) => {
+        setMealsTemplate(data);
     };
 
-    const reducer = (state, action) => {
+    const setCountHandler = (state, action) => {
         switch (action.type) {
             case "increment":
                 return { count: state.count + +action.amount };
@@ -61,47 +40,45 @@ export const AuthContextProvider = (props) => {
         }
     };
 
-    const mealsFn = (mealsList, action) => {
-        switch (action.type) {
-            case "add":
-                for (const meal of mealsList) {
-                    if (meal.id === action.id) {
-                        meal.amount += action.value;
-                        return mealsList;
-                    }
-                }
-                break;
-            case "remove":
-                for (const meal of mealsList) {
-                    if (meal.id === action.id) {
-                        meal.amount -= 1;
-                        return mealsList;
-                    }
-                }
-                break;
-            default:
-                console.log("Error in Meal useReducer");
+    const changeMeals = (mealsList, action) => {
+        if (mealsList.length === 0) {
+            mealsList = mealsTemplate;
         }
+        for (const meal of mealsList) {
+            if (meal.id === action.id) {
+                if (action.type === "add") {
+                    meal.amount += action.value;
+                }
+                if (action.type === "remove") {
+                    meal.amount -= action.value;
+                }
+            }
+        }
+        filterMeals(mealsList);
+        return mealsList;
     };
 
-    const [state, dispatch] = useReducer(reducer, { count: 0 });
-    const [cartMeals, dispatchcartMealsAdd] = useReducer(
-        mealsFn,
-        mealsTemplate
-    );
+    const filterMeals = (mealsList) => {
+        setCartMeals(mealsList.filter((el) => el.amount > 0));
+    };
 
+    const [cardCounter, dispatchSetCountHandler] = useReducer(setCountHandler, {
+        count: 0,
+    });
+    const [meals, dispatchMeals] = useReducer(changeMeals, []);
     return (
         <AuthContext.Provider
             value={{
                 modalState: showModal,
                 openModal: openModalHandler,
                 closeModal: closeModalHandler,
-                setCount: dispatch,
-                cartCounter: state,
+                setCount: dispatchSetCountHandler,
+                cartCounter: cardCounter,
                 cartMeals: cartMeals,
-                changeMealAmount: dispatchcartMealsAdd,
-                mealList: mealsTemplate,
-                filterMeals: filterMeals,
+                changeMealAmount: dispatchMeals,
+                setMeals: setMealsHandler,
+                setAnimation: setAnimationHandler,
+                animation: animation,
             }}
         >
             {props.children}

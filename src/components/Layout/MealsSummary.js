@@ -5,16 +5,16 @@ const MealsSummary = () => {
         <section className="description">
             <div className="description__container">
                 <h2 className="description__caption">
-                    Delicious Food, Delivered To You{" "}
+                    Healthy and delicious. Guaranteed.
                 </h2>
                 <p className="description__content">
-                    Chose your favorite meal from our broad selection of
-                    available meals and enjoy a delivious lunch or dinner at
-                    home.
+                    Who said that fast food can't be healthy. We definitely not!
+                    Something Japanese for the evening? Or something spicy
+                    Mexican?
                 </p>
                 <p className="description__content">
-                    All our meal sare cooked with high-quality ingredients,
-                    just-in-time and of course by experienced chefs!
+                    At foody you don't have to limit yourself. Order whatever
+                    you're hungry for from our broad selection.
                 </p>
             </div>
         </section>

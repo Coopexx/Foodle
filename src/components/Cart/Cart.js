@@ -1,23 +1,20 @@
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.scss";
 import CartItem from "./CartItem";
-import Button from "../UI/Button";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../store/auth-context";
+import CartForm from "./CartForm";
 
 const Cart = () => {
-    const options1 = { type: "cancel", content: "Close" };
-    const options2 = { type: "submit", content: "Order" };
     const [total, setTotal] = useState(0);
 
     const ctx = useContext(AuthContext);
-    const cartMeals = ctx.filterMeals(ctx.cartMeals);
 
     useEffect(() => {
         let helperVar = [];
         let newTotal = 0;
         const calcTotal = () => {
-            for (const meal of cartMeals) {
+            for (const meal of ctx.cartMeals) {
                 helperVar.push(meal.amount * +meal.price);
             }
         };
@@ -26,12 +23,12 @@ const Cart = () => {
             newTotal += helperVar[i];
         }
         setTotal(newTotal);
-    }, [setTotal, cartMeals, total]);
+    }, [ctx.cartMeals]);
 
     return (
         <div className={classes.cart}>
             <Modal closeModal={ctx.closeModal}>
-                {cartMeals.map((meal) => (
+                {ctx.cartMeals.map((meal) => (
                     <CartItem key={meal.id} {...meal} />
                 ))}
                 <div className={classes["total__container"]}>
@@ -40,10 +37,7 @@ const Cart = () => {
                         ${total.toFixed(2)}
                     </p>
                 </div>
-                <div className={classes["button-container"]}>
-                    <Button {...options1} closeModal={ctx.closeModal}></Button>
-                    <Button {...options2}></Button>
-                </div>
+                <CartForm />
             </Modal>
         </div>
     );

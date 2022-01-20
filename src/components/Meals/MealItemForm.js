@@ -20,6 +20,7 @@ const MealItemForm = (props) => {
             type: "add",
         });
         setAmount(1);
+        ctx.setAnimation();
     };
 
     return (

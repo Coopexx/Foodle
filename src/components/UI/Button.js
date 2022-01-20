@@ -1,12 +1,20 @@
 import classes from "./Button.module.scss";
 import shoppingCart from "../../img/shopping-cart.svg";
+import AuthContext from "./../../store/auth-context";
+import react, { useContext } from "react";
 
 const ButtonHeader = (props) => {
+    const ctx = useContext(AuthContext);
+
     const openModalHandler = () => {
         props.openModal();
     };
+
+    const animationClass = ctx.animation ? `${classes.animation}` : "";
+    const classHelper = `${classes.header} ${animationClass}`;
+
     return (
-        <button className={classes.header} onClick={openModalHandler}>
+        <button className={classHelper} onClick={openModalHandler}>
             <img
                 alt="Cart Icon"
                 className={classes["header__svg"]}

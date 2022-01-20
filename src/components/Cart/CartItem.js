@@ -21,7 +21,7 @@ const CartItem = (props) => {
                 });
                 ctx.changeMealAmount({
                     id: props.id,
-                    value: -1,
+                    value: 1,
                     type: "remove",
                 });
                 break;

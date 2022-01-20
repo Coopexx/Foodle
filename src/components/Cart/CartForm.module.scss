@@ -1,0 +1,46 @@
+@import "./../../styles/mixins";
+@import "./../../styles/variables";
+
+.Button_container {
+    align-self: flex-end;
+}
+
+.Form {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    &_container {
+        display: flex;
+        flex-direction: column;
+    }
+    &_input {
+        width: 30rem;
+        padding: 1rem;
+        border: 1px solid black;
+        border-radius: 5rem;
+        margin: 1rem;
+        @include respond($tab-land) {
+            width: 23rem;
+        }
+        @include respond($desk) {
+            width: 25rem;
+            margin: 1rem 2rem 1rem 2rem;
+        }
+        @include respond($big-desk) {
+            width: 35rem;
+            margin: 1rem 3rem 1rem 3rem;
+        }
+    }
+}
+
+.separator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    @include respond($tab-land) {
+        flex-direction: row;
+    }
+}

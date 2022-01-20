@@ -23,6 +23,9 @@
     align-items: center;
     color: $color-white;
     background-color: $color-secondary;
+    box-shadow: 6px 5px 19px -5px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 5px 19px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 5px 19px -5px rgba(0, 0, 0, 0.75);
 
     &__caption {
         margin-left: 7%;

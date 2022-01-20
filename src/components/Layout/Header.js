@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <>
             <header className="nav">
-                <h1 className="nav__caption">ReactMeals</h1>
+                <h1 className="nav__caption">Foody</h1>
                 <Button
                     type="header"
                     {...ctx.cartCounter}
