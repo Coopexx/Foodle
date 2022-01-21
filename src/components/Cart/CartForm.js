@@ -1,11 +1,12 @@
 import Button from "../UI/Button";
 import AuthContext from "../../store/auth-context";
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import styles from "./CartForm.module.scss";
 import config from "../../store/config";
 
 const CartForm = () => {
     const [isValid, setIsValid] = useState(false);
+
     const ctx = useContext(AuthContext);
 
     const firstNameRef = useRef();
@@ -18,16 +19,7 @@ const CartForm = () => {
     const options1 = { type: "cancel", content: "Close" };
     const options2 = { type: "submit", content: "Order" };
 
-    //let form data persist and delete after. use usestatehooks
-    //remove animation class on disabled button
-
-    useEffect(() => {
-        if (ctx.cartMeals.length === 0) {
-            setIsValid(false);
-        }
-    }, [ctx.cartMeals]);
-
-    const onChangeHandler = (event) => {
+    const checkValidity = useCallback(() => {
         const firstNameValid = firstNameRef.current.value.trim().length > 0;
         const lastNameValid = lastNameRef.current.value.trim().length > 0;
         const streetValid = streetRef.current.value.trim().length > 0;
@@ -83,6 +75,32 @@ const CartForm = () => {
         } else {
             cityRef.current.classList.add(`${styles.invalid}`);
         }
+    }, []);
+
+    useEffect(() => {
+        checkValidity();
+        if (ctx.cartMeals.length === 0) {
+            setIsValid(false);
+        }
+    }, [ctx.cartMeals, checkValidity]);
+
+    const onChangeHandler = (event) => {
+        checkValidity();
+        ctx.setFirstName(firstNameRef.current.value);
+        ctx.setLastName(lastNameRef.current.value);
+        ctx.setStreet(streetRef.current.value);
+        ctx.setStreetNumber(streetNumberRef.current.value);
+        ctx.setPostalCode(postalCodeRef.current.value);
+        ctx.setCity(cityRef.current.value);
+    };
+
+    const clearForm = () => {
+        ctx.setFirstName("");
+        ctx.setLastName("");
+        ctx.setStreet("");
+        ctx.setStreetNumber("");
+        ctx.setPostalCodeRef("");
+        ctx.setCity("");
     };
 
     const postForm = async (formData) => {
@@ -113,6 +131,7 @@ const CartForm = () => {
             formData.postalCode = postalCodeRef.current.value;
             formData.city = cityRef.current.value;
             // postForm(formData);
+            clearForm();
         }
     };
 
@@ -126,6 +145,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.firstName}
                             ref={firstNameRef}
                         ></input>
                         <input
@@ -133,6 +153,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.street}
                             ref={streetRef}
                         ></input>
                         <input
@@ -140,6 +161,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.postalCode}
                             ref={postalCodeRef}
                         ></input>
                     </div>
@@ -149,6 +171,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.lastName}
                             ref={lastNameRef}
                         ></input>
                         <input
@@ -156,6 +179,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.streetNumber}
                             ref={streetNumberRef}
                         ></input>
 
@@ -164,6 +188,7 @@ const CartForm = () => {
                             type="text"
                             className={`${styles.Form_input} ${styles.invalid}`}
                             onChange={onChangeHandler}
+                            value={ctx.city}
                             ref={cityRef}
                         ></input>
                     </div>

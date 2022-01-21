@@ -9,6 +9,32 @@ export const AuthContextProvider = (props) => {
     const [mealsTemplate, setMealsTemplate] = useState([]);
     const [cartMeals, setCartMeals] = useState([]);
     const [animation, setAnimation] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [street, setStreet] = useState("");
+    const [streetNumber, setStreetNumber] = useState("");
+    const [postalCode, setpostalCode] = useState("");
+    const [city, setCity] = useState("");
+
+    //rewrite the form value handlers into a reducer function
+    const setFirstNameHandler = (val) => {
+        setFirstName(val);
+    };
+    const setLastNameHandler = (val) => {
+        setLastName(val);
+    };
+    const setStreetHandler = (val) => {
+        setStreet(val);
+    };
+    const setStreetNumberHandler = (val) => {
+        setStreetNumber(val);
+    };
+    const setPostalCodeHandler = (val) => {
+        setpostalCode(val);
+    };
+    const setCityHandler = (val) => {
+        setCity(val);
+    };
 
     const setAnimationHandler = () => {
         setAnimation(true);
@@ -79,6 +105,18 @@ export const AuthContextProvider = (props) => {
                 setMeals: setMealsHandler,
                 setAnimation: setAnimationHandler,
                 animation: animation,
+                firstName: firstName,
+                lastName: lastName,
+                street: street,
+                streetNumber: streetNumber,
+                postalCode: postalCode,
+                city: city,
+                setFirstName: setFirstNameHandler,
+                setLastName: setLastNameHandler,
+                setStreet: setStreetHandler,
+                setStreetNumber: setStreetNumberHandler,
+                setPostalCode: setPostalCodeHandler,
+                setCity: setCityHandler,
             }}
         >
             {props.children}

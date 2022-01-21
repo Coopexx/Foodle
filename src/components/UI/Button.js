@@ -34,7 +34,6 @@ const TwoButtons = (props) => {
     let className = `${classes[props.type]} ${
         props.type === "submit" && classes.submit_hover
     }`;
-    console.log(className);
     let valid = props.isValid;
     if (props.type === "submit" && !props.isValid) {
         className = `${classes[props.type]} ${classes.invalid}`;
