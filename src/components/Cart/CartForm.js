@@ -99,8 +99,11 @@ const CartForm = () => {
         ctx.setLastName("");
         ctx.setStreet("");
         ctx.setStreetNumber("");
-        ctx.setPostalCodeRef("");
+        ctx.setPostalCode("");
         ctx.setCity("");
+        // Can be activated if resetting mealsList works
+        // ctx.setCount({ type: "delete", amount: 0 });
+        // ctx.setCartMeals([]);
     };
 
     const postForm = async (formData) => {

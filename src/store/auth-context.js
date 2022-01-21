@@ -61,13 +61,15 @@ export const AuthContextProvider = (props) => {
                 return { count: state.count + +action.amount };
             case "decrement":
                 return { count: state.count - +action.amount };
+            case "delete":
+                return { count: action.amount };
             default:
                 console.log("Error Reducer");
         }
     };
 
     const changeMeals = (mealsList, action) => {
-        if (mealsList.length === 0) {
+        if (mealsList.length === 0 || action.type === "delete") {
             mealsList = mealsTemplate;
         }
         for (const meal of mealsList) {
@@ -101,6 +103,7 @@ export const AuthContextProvider = (props) => {
                 setCount: dispatchSetCountHandler,
                 cartCounter: cardCounter,
                 cartMeals: cartMeals,
+                setCartMeals: setCartMeals,
                 changeMealAmount: dispatchMeals,
                 setMeals: setMealsHandler,
                 setAnimation: setAnimationHandler,
