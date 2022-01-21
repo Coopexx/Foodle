@@ -133,7 +133,7 @@ const CartForm = () => {
             formData.streetNumber = streetNumberRef.current.value;
             formData.postalCode = postalCodeRef.current.value;
             formData.city = cityRef.current.value;
-            // postForm(formData);
+            postForm(formData);
             clearForm();
         }
     };
