@@ -1,14 +1,89 @@
 import Button from "../UI/Button";
 import AuthContext from "../../store/auth-context";
-import { useContext } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import styles from "./CartForm.module.scss";
 import config from "../../store/config";
 
 const CartForm = () => {
+    const [isValid, setIsValid] = useState(false);
     const ctx = useContext(AuthContext);
+
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const streetRef = useRef();
+    const streetNumberRef = useRef();
+    const postalCodeRef = useRef();
+    const cityRef = useRef();
 
     const options1 = { type: "cancel", content: "Close" };
     const options2 = { type: "submit", content: "Order" };
+
+    //let form data persist and delete after. use usestatehooks
+    //remove animation class on disabled button
+
+    useEffect(() => {
+        if (ctx.cartMeals.length === 0) {
+            setIsValid(false);
+        }
+    }, [ctx.cartMeals]);
+
+    const onChangeHandler = (event) => {
+        const firstNameValid = firstNameRef.current.value.trim().length > 0;
+        const lastNameValid = lastNameRef.current.value.trim().length > 0;
+        const streetValid = streetRef.current.value.trim().length > 0;
+        const streetNumberValid =
+            streetNumberRef.current.value.trim().length > 0;
+        const postalCodeValid =
+            postalCodeRef.current.value.trim().length > 0 &&
+            !isNaN(postalCodeRef.current.value.trim());
+        const cityValid = cityRef.current.value.trim().length > 0;
+        const cartNotEmpty = ctx.cartMeals.length > 0;
+
+        if (
+            firstNameValid &&
+            lastNameValid &&
+            streetValid &&
+            streetNumberValid &&
+            postalCodeValid &&
+            cityValid &&
+            cartNotEmpty
+        ) {
+            setIsValid(true);
+        } else {
+            setIsValid(false);
+        }
+
+        if (firstNameValid) {
+            firstNameRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            firstNameRef.current.classList.add(`${styles.invalid}`);
+        }
+        if (lastNameValid) {
+            lastNameRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            lastNameRef.current.classList.add(`${styles.invalid}`);
+        }
+        if (streetValid) {
+            streetRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            streetRef.current.classList.add(`${styles.invalid}`);
+        }
+        if (streetNumberValid) {
+            streetNumberRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            streetNumberRef.current.classList.add(`${styles.invalid}`);
+        }
+        if (postalCodeValid) {
+            postalCodeRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            postalCodeRef.current.classList.add(`${styles.invalid}`);
+        }
+        if (cityValid) {
+            cityRef.current.classList.remove(`${styles.invalid}`);
+        } else {
+            cityRef.current.classList.add(`${styles.invalid}`);
+        }
+    };
 
     const postForm = async (formData) => {
         const url = config.API_KEY + "/user.json";
@@ -26,31 +101,19 @@ const CartForm = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const formData = {};
-        for (const target of event.target) {
-            switch (target.placeholder) {
-                case "First Name":
-                    formData.firstName = target.value;
-                    break;
-                case "Last Name":
-                    formData.lastName = target.value;
-                    break;
-                case "Street":
-                    formData.street = target.value;
-                    break;
-                case "Street Number":
-                    formData.streetNumber = target.value;
-                    break;
-                case "Postal Code":
-                    formData.postalCode = target.value;
-                    break;
-                case "City":
-                    formData.city = target.value;
-                    break;
-                default:
-            }
+        //prevent button click as long as isValid is false
+        console.log("button pressed");
+
+        if (isValid) {
+            const formData = {};
+            formData.firstName = firstNameRef.current.value;
+            formData.lastName = lastNameRef.current.value;
+            formData.street = streetRef.current.value;
+            formData.streetNumber = streetNumberRef.current.value;
+            formData.postalCode = postalCodeRef.current.value;
+            formData.city = cityRef.current.value;
+            // postForm(formData);
         }
-        postForm(formData);
     };
 
     return (
@@ -61,41 +124,57 @@ const CartForm = () => {
                         <input
                             placeholder="First Name"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={firstNameRef}
                         ></input>
                         <input
                             placeholder="Street"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={streetRef}
                         ></input>
                         <input
                             placeholder="Postal Code"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={postalCodeRef}
                         ></input>
                     </div>
                     <div className={styles.Form_container}>
                         <input
                             placeholder="Last Name"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={lastNameRef}
                         ></input>
                         <input
                             placeholder="Street Number"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={streetNumberRef}
                         ></input>
 
                         <input
                             placeholder="City"
                             type="text"
-                            className={styles.Form_input}
+                            className={`${styles.Form_input} ${styles.invalid}`}
+                            onChange={onChangeHandler}
+                            ref={cityRef}
                         ></input>
                     </div>
                 </div>
                 <div className={styles.Button_container}>
                     <Button {...options1} closeModal={ctx.closeModal}></Button>
-                    <Button {...options2} type="submit"></Button>
+                    <Button
+                        {...options2}
+                        type="submit"
+                        isValid={isValid}
+                    ></Button>
                 </div>
             </form>
         </div>

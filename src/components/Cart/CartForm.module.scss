@@ -15,11 +15,14 @@
         flex-direction: column;
     }
     &_input {
-        width: 30rem;
+        width: 25rem;
         padding: 1rem;
         border: 1px solid black;
         border-radius: 5rem;
         margin: 1rem;
+        @include respond($tab-port) {
+            width: 26rem;
+        }
         @include respond($tab-land) {
             width: 23rem;
         }
@@ -36,11 +39,21 @@
 
 .separator {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin: 2rem;
-    @include respond($tab-land) {
-        flex-direction: row;
+}
+
+.invalid {
+    background-color: $color-invalid-secondary;
+    border: 1px solid $color-invalid-primary;
+
+    &::placeholder {
+        color: $color-invalid-primary;
+    }
+
+    &:focus {
+        outline: none;
     }
 }

@@ -1,7 +1,7 @@
 import classes from "./Button.module.scss";
 import shoppingCart from "../../img/shopping-cart.svg";
 import AuthContext from "./../../store/auth-context";
-import react, { useContext } from "react";
+import { useContext } from "react";
 
 const ButtonHeader = (props) => {
     const ctx = useContext(AuthContext);
@@ -31,7 +31,17 @@ const ButtonAdd = () => {
 };
 
 const TwoButtons = (props) => {
-    const className = classes[props.type];
+    let className = `${classes[props.type]} ${
+        props.type === "submit" && classes.submit_hover
+    }`;
+    console.log(className);
+    let valid = props.isValid;
+    if (props.type === "submit" && !props.isValid) {
+        className = `${classes[props.type]} ${classes.invalid}`;
+    }
+    if (props.type === "cancel") {
+        valid = true;
+    }
 
     const closeModalHandler = () => {
         if (props.hasOwnProperty("closeModal")) {
@@ -40,7 +50,11 @@ const TwoButtons = (props) => {
     };
 
     return (
-        <button className={`${className}`} onClick={closeModalHandler}>
+        <button
+            className={`${className}`}
+            onClick={closeModalHandler}
+            disabled={!valid}
+        >
             {props.content}
         </button>
     );

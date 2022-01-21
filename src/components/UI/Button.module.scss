@@ -71,7 +71,8 @@
     color: $color-white;
     font-size: 2rem;
     transition: all 0.5s;
-    &:hover {
+
+    &_hover:hover {
         transform: scale(1.5);
         background-color: $color-orange-light;
         border: none;
@@ -111,4 +112,10 @@
         transform: scale(1.2);
         background-color: #8baa83;
     }
+}
+
+.invalid {
+    color: $color-disabled-dark;
+    background-color: $color-disabled;
+    border-color: $color-disabled;
 }
